@@ -1,0 +1,19 @@
+{
+  "name": "WannaGoApi",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BSchum/WannaGoApi.git"
+  },
+  "author": "oloick - bschum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BSchum/WannaGoApi/issues"
+  },
+  "homepage": "https://github.com/BSchum/WannaGoApi#readme"
+}
