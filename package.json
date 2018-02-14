@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/BSchum/WannaGoApi/issues"
   },
-  "homepage": "https://github.com/BSchum/WannaGoApi#readme"
+  "homepage": "https://github.com/BSchum/WannaGoApi#readme",
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
