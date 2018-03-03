@@ -26,6 +26,8 @@ var userSchema = new Schema({
        type: Boolean
      }
 });
+//TODO - Ajouter les fonctions save user ici
 
+//TODO - EN UNE SEULE LIGNE GOGOLE
 var User = mongoose.model('User', userSchema);
 module.exports = User;
