@@ -5,13 +5,15 @@ exports.user_create = function(req,res){
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
-  var date = req.body.date;
-  var photo = req.body.photo
+  var photo = req.body.photo;
+  var cover = req.body.cover;
+  var birthdate = req.body.birthdate;
+  var isDeleted = req.body.isDeleted;
 
-  saveUser(username, password, email, date, photo, req, res);
+  saveUser(username, password, email, photo, cover, birthdate, isDeleted, req, res);
 };
 
-var saveUser = function (username, password, email, date,photo, req, res) {
+var saveUser = function (username, password, email, photo, cover, birthdate, isDeleted, req, res) {
   User
     .findOne({username: req.body.username})
     .exec(function(err, user){
@@ -20,12 +22,15 @@ var saveUser = function (username, password, email, date,photo, req, res) {
             username: username,
             email: email,
             password: password,
-            photo: photo
+            photo: photo,
+            cover: cover,
+            birthdate: birthdate,
+            isDeleted: isDeleted
         });
-        user
-            .save();
+        user.save();
+        res.json(user);
       } else{
-        res.end();
+        res.send(" Pas enregistre, existe déjà");
       }
     })
 };

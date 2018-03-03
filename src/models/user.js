@@ -18,6 +18,12 @@ var userSchema = new Schema({
     },
     cover:{
        type: String
+     },
+     birthdate:{
+       type: String
+     },
+     isDeleted:{
+       type: Boolean
      }
 });
 
