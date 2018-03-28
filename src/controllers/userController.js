@@ -1,36 +1,32 @@
-var User =require('../models/user.js');
-var bodyParser = require('body-parser');
+const User = require('../models/user.js');
 
 exports.user_create = function(req,res){
-  var username = req.body.username;
-  var email = req.body.email;
-  var password = req.body.password;
-  var photo = req.body.photo;
-  var cover = req.body.cover;
-  var birthdate = req.body.birthdate;
-  var isDeleted = req.body.isDeleted;
 
-  saveUser(username, password, email, photo, cover, birthdate, isDeleted, req, res);
-};
+  const new_user = User({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      photo: req.body.photo,
+      cover: req.body.cover,
+      birthdate: req.body.birthdate,
+      isDeleted: req.body.isDeleted
+  });
 
-var saveUser = function (username, password, email, photo, cover, birthdate, isDeleted, req, res) {
-  User
-    .findOne({username: req.body.username})
-    .exec(function(err, user){
-      if(!user){
-        var user = User({
-            username: username,
-            email: email,
-            password: password,
-            photo: photo,
-            cover: cover,
-            birthdate: birthdate,
-            isDeleted: isDeleted
-        });
-        user.save();
-        res.json(user);
-      } else{
-        res.send(" Pas enregistre, existe déjà");
-      }
-    })
+  User.findOne({ username: new_user.username}, (err, user) => {
+    if (err) {
+      res.send(" Pas enregistre, existe déjà");
+    }
+
+    if(!user){
+      User.save_user(new_user, (err, saved_user) =>{
+        if (err) {
+          res.send(" Pas enregistre, existe déjà");
+        }
+        res.json(saved_user);
+      });
+
+    } else {
+      res.send(" Pas enregistre, existe déjà");
+    }
+  });
 };
