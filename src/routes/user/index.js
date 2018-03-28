@@ -1,5 +1,5 @@
 var router = require('express').Router();
 
-router.use('/create', require('./user.js'));
+router.use('/', require('./user.js'));
 
 module.exports = router;

@@ -26,12 +26,20 @@ var user_schema = new Schema({
      },
      is_deleted:{
        type: Boolean,
-       default: true
+       default: false
      }
 });
 
-module.exports = mongoose.model('User', user_schema);
+const User = module.exports = mongoose.model('User', user_schema);
 
 module.exports.save_user = function (user, callback) {
   user.save(callback);
+};
+
+module.exports.show_user_id = function(id, callback){
+   User.findById(id, callback);
+};
+
+module.exports.show_user_email = function(email, callback){
+  User.find({email: email}, callback);
 };

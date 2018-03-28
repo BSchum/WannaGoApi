@@ -2,10 +2,10 @@ var router = require('express').Router();
 
 var user_controller =require('../../controllers/userController.js');
 
-router.post('/', user_controller.user_create);
+router.post('/create', user_controller.user_create);
 
-router.get('/', function(req,res){
-  res.send('test');
-});
+router.post('/show', user_controller.get_user_by_id);
+
+router.post('/find_by_email', user_controller.get_user_by_email);
 
 module.exports = router;
