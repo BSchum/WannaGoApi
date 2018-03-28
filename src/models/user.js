@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var user_schema = new Schema({
    username : {
        type: String,
         required: true,
@@ -24,12 +24,13 @@ var userSchema = new Schema({
      birthdate:{
        type: String
      },
-     isDeleted:{
-       type: Boolean
+     is_deleted:{
+       type: Boolean,
+       default: true
      }
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', user_schema);
 
 module.exports.save_user = function (user, callback) {
   user.save(callback);
