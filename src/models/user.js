@@ -1,7 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const Schema = mongoose.Schema;
 
-var user_schema = new Schema({
+const user_schema = new Schema({
    username : {
        type: String,
         required: true,
@@ -33,7 +34,13 @@ var user_schema = new Schema({
 const User = module.exports = mongoose.model('User', user_schema);
 
 module.exports.save_user = function (user, callback) {
-  user.save(callback);
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(user.password, salt, function(err, hash) {
+        if (err) throw err;
+        user.password = hash;
+        user.save(callback);
+    });
+  });
 };
 
 module.exports.show_user_id = function(id, callback){
@@ -42,4 +49,11 @@ module.exports.show_user_id = function(id, callback){
 
 module.exports.show_user_email = function(email, callback){
   User.find({email: email}, callback);
+};
+
+module.exports.comparePassword = function(passwordEntered, hashedPassword, callback){
+  bcrypt.compare(passwordEntered, hashedPassword, function(err, isMatch) {
+    if (err) throw err;
+    callback(null, isMatch);
+  });
 };
