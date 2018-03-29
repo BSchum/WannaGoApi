@@ -21,3 +21,12 @@ exports.pic_get_all = function(req, res){
     res.json(showed_pics);
   });
 };
+
+exports.pic_get_place = function(req, res){
+  Pic.show_all_places(req.body.place, (err, showed_pics_place) => {
+    if (err) {
+      res.send(" Erreur : showed_place");
+    }
+    res.json(showed_pics_place);
+  });
+};

@@ -22,7 +22,7 @@ module.exports.save_pic = function (pic, callback) {
   pic.save(callback);
 };
 
-module.exports.show_all_pics = function(callback){
-  const query = {}
+module.exports.show_all_places = function(place, callback){
+  const query = {place: place}
   Pic.find(query, callback);
 };
