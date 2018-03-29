@@ -12,3 +12,12 @@ exports.pic_create = function(req,res){
     res.json(saved_pic);
   });
 };
+
+exports.pic_get_all = function(req, res){
+  Pic.show_all_pics((err, showed_pics) => {
+    if (err) {
+      res.send(" Erreur : showed_pics");
+    }
+    res.json(showed_pics);
+  });
+};
