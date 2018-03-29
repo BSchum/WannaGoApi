@@ -57,3 +57,8 @@ module.exports.comparePassword = function(passwordEntered, hashedPassword, callb
     callback(null, isMatch);
   });
 };
+
+module.exports.show_all_user = function(callback){
+  const query = {}
+  User.find(query, callback);
+};

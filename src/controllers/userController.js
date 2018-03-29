@@ -48,3 +48,12 @@ exports.get_user_by_email = function(req, res){
     }
   });
 };
+
+exports.get_all_user = function(req, res){
+  User.show_all_user((err, showed_users) => {
+    if (err) {
+      res.send(" Erreur : showed_users");
+    }
+    res.json(showed_users);
+  });
+};
