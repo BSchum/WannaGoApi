@@ -7,7 +7,7 @@ exports.pic_create = function(req,res){
   });
   Pic.save_pic(new_pic, (err, saved_pic) =>{
     if (err) {
-      res.send(" Erreur : saved pic");
+      res.json({status: false, message: 'Erreur'});
     }
     res.json(saved_pic);
   });
@@ -16,7 +16,7 @@ exports.pic_create = function(req,res){
 exports.pic_get_all = function(req, res){
   Pic.show_all_pics((err, showed_pics) => {
     if (err) {
-      res.send(" Erreur : showed_pics");
+      res.json({status: false, message: 'Erreur'});
     }
     res.json(showed_pics);
   });
@@ -25,7 +25,7 @@ exports.pic_get_all = function(req, res){
 exports.pic_get_place = function(req, res){
   Pic.show_all_places(req.body.place, (err, showed_pics_place) => {
     if (err) {
-      res.send(" Erreur : showed_place");
+      res.json({status: false, message: 'Erreur'});
     }
     res.json(showed_pics_place);
   });

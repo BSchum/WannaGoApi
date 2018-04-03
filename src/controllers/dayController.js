@@ -8,7 +8,7 @@ exports.day_create = function(req,res){
   });
   Day.save_day(new_day, (err, saved_day) =>{
     if (err) {
-      res.send(" Erreur : saved day");
+      res.json({status: false, message: 'Erreur'});
     }
     res.json(saved_day);
   });

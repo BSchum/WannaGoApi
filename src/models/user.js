@@ -43,12 +43,12 @@ module.exports.save_user = function (user, callback) {
   });
 };
 
-module.exports.show_user_id = function(id, callback){
+module.exports.get_user_by_id = function(id, callback){
    User.findById(id, callback);
 };
 
-module.exports.show_user_email = function(email, callback){
-  User.find({email: email}, callback);
+module.exports.get_user_by_email = function(email, callback){
+  User.findOne({email: email}, callback);
 };
 
 module.exports.comparePassword = function(passwordEntered, hashedPassword, callback){
@@ -59,6 +59,6 @@ module.exports.comparePassword = function(passwordEntered, hashedPassword, callb
 };
 
 module.exports.show_all_user = function(callback){
-  const query = {}
+  const query = {};
   User.find(query, callback);
 };
