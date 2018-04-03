@@ -26,3 +26,8 @@ module.exports.show_all_places = function(place, callback){
   const query = {place: place}
   Pic.find(query, callback);
 };
+
+module.exports.show_all_pics = function(callback){
+  const query = {}
+  Pic.find(query, callback);
+};
