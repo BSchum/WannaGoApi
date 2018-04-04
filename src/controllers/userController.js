@@ -9,6 +9,15 @@ exports.get_user_by_id = function(req, res){
   });
 };
 
+exports.get_current_user = function(req, res){
+  User.get_current_user(req.user._id, (err, showed_user) => {
+    if(err){
+      res.json({status: false, message: 'Erreur'});
+    }
+    res.json(showed_user);
+  });
+};
+
 exports.get_user_by_emaill = function(req, res){
   User.get_user_by_email(req.body.email, (err, showed_user) =>{
     if(err){

@@ -47,6 +47,10 @@ module.exports.get_user_by_id = function(id, callback){
    User.findById(id, callback);
 };
 
+module.exports.get_current_user = function(id, callback){
+  User.findById(id, callback);
+};
+
 module.exports.get_user_by_email = function(email, callback){
   User.findOne({email: email}, callback);
 };

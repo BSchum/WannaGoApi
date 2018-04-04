@@ -15,12 +15,11 @@ router.use(function(req, res, next) {
 
     // verifies secret and checks exp
     jwt.verify(token, process.env.SECRET, function(err, decoded) {
-      console.log('token : '+ token + ' SECRET : ' + process.env.SECRET);
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
+        req.user = decoded;
         next();
       }
     });
