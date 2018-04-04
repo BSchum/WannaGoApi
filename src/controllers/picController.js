@@ -30,3 +30,11 @@ exports.pic_get_place = function(req, res){
     res.json(showed_pics_place);
   });
 };
+
+exports.update_pic = function(req, res){
+  console.log(' update ');
+  Pic.findByIdAndUpdate(req.body.id, req.body,{new:true}, (err, pic) => {
+    if(err) return res.json({status: false, message: 'Erreur update'});
+    return res.json({status: true, message: pic});
+  });
+};

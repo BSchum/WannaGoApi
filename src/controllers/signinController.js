@@ -24,7 +24,16 @@ exports.user_signin = function(req,res){
             res.json({status: false, message: 'You provided a wrong password. Please try again.'});
           } else {
             // Generate token
-            const token =jwt.sign(user.toObject(), process.env.SECRET);
+            const user_details = {
+              _id: user._id,
+              username: user.username,
+              email: user.email,
+              photo: user.photo,
+              cover: user.cover,
+              birthdate: user.birthdate
+            };
+            // user.toObject()  #Permet de mettre l'objet dans la création du payload
+            const token =jwt.sign(user_details, process.env.SECRET);
 
             res.json({status: true, message: user.firstname + ' has logged in successfully.', token:token, user: {
               id: user._id,
