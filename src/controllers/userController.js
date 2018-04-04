@@ -14,7 +14,7 @@ exports.get_user_by_emaill = function(req, res){
     if(err){
       res.json({status: false, message: 'Erreur'});
     }
-    if(showed_user.length != 0){
+    if(showed_user){
       res.json(showed_user);
     } else {
       res.json({status: false, message: 'Erreur email'});;
