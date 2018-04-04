@@ -13,3 +13,10 @@ exports.day_create = function(req,res){
     res.json(saved_day);
   });
 };
+
+exports.update_day = function(req, res){
+  Day.findByIdAndUpdate(req.body.id, req.body,{new:true}, (err, day) => {
+    if(err) return res.json({status: false, message: 'Erreur update'});
+    return res.json({status: true, message: day});
+  });
+};
