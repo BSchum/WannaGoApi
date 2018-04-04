@@ -39,3 +39,10 @@ exports.get_all_user = function(req, res){
     res.json(showed_users);
   });
 };
+
+exports.update_user = function(req, res){
+  User.findByIdAndUpdate(req.user._id, req.body,{new:true}, (err, user) => {
+    if(err) return res.json({status: false, message: 'Erreur update'});
+    return res.json({status: true, message: user});
+  });
+};
