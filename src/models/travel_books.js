@@ -14,10 +14,10 @@ const travel_books_schema = new Schema({
      type: String,
      default: false
    },
-   pays:{
+   pays:[{
      type: String,
      required: true
-   },
+   }],
    list_days:[{
      type: Schema.Types.ObjectId, ref:'Day'
    }],
