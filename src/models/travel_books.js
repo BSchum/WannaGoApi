@@ -37,3 +37,7 @@ module.exports.show_all_travel_books = function(callback){
   const query = {}
   Travel_books.find(query, callback);
 };
+
+module.exports.get_travel_books_by_id = function(id, callback){
+   Travel_books.findById(id, callback);
+};

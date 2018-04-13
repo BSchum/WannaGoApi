@@ -23,3 +23,12 @@ exports.travel_books_get_all = function(req, res){
     res.json(showed_travel_books);
   });
 };
+
+exports.get_travel_books_by_id = function(req, res){
+  Travel_books.get_travel_books_by_id(req.body.id, (err, showed_travel_books) => {
+    if (err){
+      res.json({status: false, message: 'Erreur'});
+    }
+    res.json(showed_travel_books);
+  });
+};
