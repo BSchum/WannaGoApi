@@ -32,6 +32,7 @@ exports.pic_get_place = function(req, res){
 };
 
 exports.update_pic = function(req, res){
+  req.body.updatedAt = new Date();
   Pic.findByIdAndUpdate(req.body.id, req.body,{new:true}, (err, pic) => {
     if(err) return res.json({status: false, message: 'Erreur update'});
     return res.json({status: true, message: pic});

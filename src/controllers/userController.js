@@ -1,7 +1,7 @@
 const User = require('../models/user.js');
 
 exports.get_user_by_id = function(req, res){
-  User.get_user_by_id(req.body.id, (err, showed_user) => {
+  User.get_user_by_id(req.user._id, (err, showed_user) => {
     if (err){
       res.json({status: false, message: 'Erreur'});
     }
@@ -41,6 +41,7 @@ exports.get_all_user = function(req, res){
 };
 
 exports.update_user = function(req, res){
+  req.body.updatedAt = new Date();
   User.findByIdAndUpdate(req.user._id, req.body,{new:true}, (err, user) => {
     if(err) return res.json({status: false, message: 'Erreur update'});
     return res.json({status: true, message: user});

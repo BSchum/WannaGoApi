@@ -15,6 +15,7 @@ exports.day_create = function(req,res){
 };
 
 exports.update_day = function(req, res){
+  req.body.updatedAt = new Date();
   Day.findByIdAndUpdate(req.body.id, req.body,{new:true}, (err, day) => {
     if(err) return res.json({status: false, message: 'Erreur update'});
     return res.json({status: true, message: day});

@@ -43,6 +43,7 @@ exports.get_travel_books_by_country = function(req, res){
 };
 
 exports.update_travel_books = function(req, res){
+  req.body.updatedAt = new Date();
   Travel_books.findByIdAndUpdate(req.body.id, req.body,{new:true}, (err, travel_books) => {
     if(err) return res.json({status: false, message: 'Erreur update'});
     return res.json({status: true, message: travel_books});
