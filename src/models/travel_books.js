@@ -28,3 +28,12 @@ const travel_books_schema = new Schema({
 });
 
 const Travel_books = module.exports = mongoose.model('Travel_books', travel_books_schema);
+
+module.exports.save_travel_books = function (Travel_books, callback) {
+  Travel_books.save(callback);
+};
+
+module.exports.show_all_travel_books = function(callback){
+  const query = {}
+  Travel_books.find(query, callback);
+};
