@@ -13,7 +13,17 @@ const pic_schema = new Schema({
    is_deleted:{
      type: Boolean,
      default: false
-   }
+   },
+   createdAt:{
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  updatedAt:{
+   type: Date,
+   required: true,
+   default: Date.now
+ }
 });
 
 const Pic = module.exports = mongoose.model('Pic', pic_schema);

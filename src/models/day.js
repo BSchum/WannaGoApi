@@ -16,7 +16,17 @@ const day_schema = new Schema({
    is_deleted:{
      type: Boolean,
      default: false
-   }
+   },
+   createdAt:{
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  updatedAt:{
+   type: Date,
+   required: true,
+   default: Date.now
+ }
 });
 
 const Day = module.exports = mongoose.model('Day', day_schema);

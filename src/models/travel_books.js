@@ -24,7 +24,17 @@ const travel_books_schema = new Schema({
    is_deleted:{
      type: Boolean,
      default: false
-   }
+   },
+   createdAt:{
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  updatedAt:{
+   type: Date,
+   required: true,
+   default: Date.now
+ }
 });
 
 const Travel_books = module.exports = mongoose.model('Travel_books', travel_books_schema);

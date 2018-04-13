@@ -28,7 +28,17 @@ const user_schema = new Schema({
      is_deleted:{
        type: Boolean,
        default: false
-     }
+     },
+     createdAt:{
+      type: Date,
+      required: true,
+      default: Date.now
+    },
+    updatedAt:{
+     type: Date,
+     required: true,
+     default: Date.now
+   }
 });
 
 const User = module.exports = mongoose.model('User', user_schema);
