@@ -41,3 +41,8 @@ module.exports.show_all_travel_books = function(callback){
 module.exports.get_travel_books_by_id = function(id, callback){
    Travel_books.findById(id, callback);
 };
+
+module.exports.get_travel_books_by_country = function(country, callback){
+  const query = {pays: country}
+  Travel_books.find(query, callback);
+};

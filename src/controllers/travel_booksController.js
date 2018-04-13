@@ -32,3 +32,19 @@ exports.get_travel_books_by_id = function(req, res){
     res.json(showed_travel_books);
   });
 };
+
+exports.get_travel_books_by_country = function(req, res){
+  Travel_books.get_travel_books_by_country(req.body.country, (err, showed_travel_books) => {
+    if (err){
+      res.json({status: false, message: 'Erreur'});
+    }
+    res.json(showed_travel_books);
+  });
+};
+
+exports.update_travel_books = function(req, res){
+  Travel_books.findByIdAndUpdate(req.body.id, req.body,{new:true}, (err, travel_books) => {
+    if(err) return res.json({status: false, message: 'Erreur update'});
+    return res.json({status: true, message: travel_books});
+  });
+};
