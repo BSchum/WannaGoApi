@@ -1,5 +1,6 @@
 const User = require('../models/user.js');
 const validator = require('validator');
+const Traveler = require('../models/traveler.js');
 
 exports.user_create = function(req,res){
   if (validator.isEmail(req.body.email)) {
@@ -21,6 +22,15 @@ exports.user_create = function(req,res){
           if (err) {
             res.json({status: false, message: 'Erreur'});
           }
+          const new_traveler = new Traveler({
+            profile: saved_user
+          });
+          Traveler.save_traveler(new_traveler, (err, saved_traveler) =>{
+            if (err) {
+              res.json({status: false, message: 'Erreur'});
+            }
+            console.log(saved_traveler);
+          });
           res.json(saved_user);
         });
       } else {
