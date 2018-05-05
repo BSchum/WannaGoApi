@@ -65,6 +65,10 @@ module.exports.get_user_by_email = function(email, callback){
   User.findOne({email: email}, callback);
 };
 
+module.exports.get_user_by_username = function(username, callback){
+  User.findOne({username: username}, callback);
+};
+
 module.exports.comparePassword = function(passwordEntered, hashedPassword, callback){
   bcrypt.compare(passwordEntered, hashedPassword, function(err, isMatch) {
     if (err) throw err;

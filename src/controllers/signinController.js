@@ -35,7 +35,7 @@ exports.user_signin = function(req,res){
             // user.toObject()  #Permet de mettre l'objet dans la création du payload
             const token =jwt.sign(user_details, process.env.SECRET);
 
-            res.json({status: true, message: user.firstname + ' has logged in successfully.', token:token, user: {
+            res.json({status: true, message: user.username + ' has logged in successfully.', token:token, user: {
               id: user._id,
               firstname: user.firstname,
               lastname: user.lastname,

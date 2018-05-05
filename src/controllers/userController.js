@@ -1,7 +1,7 @@
 const User = require('../models/user.js');
 
 exports.get_user_by_id = function(req, res){
-  User.get_user_by_id(req.user._id, (err, showed_user) => {
+  User.get_user_by_id(req.body.id, (err, showed_user) => {
     if (err){
       res.json({status: false, message: 'Erreur'});
     }
@@ -27,6 +27,19 @@ exports.get_user_by_emaill = function(req, res){
       res.json(showed_user);
     } else {
       res.json({status: false, message: 'Erreur email'});;
+    }
+  });
+};
+
+exports.get_user_by_username = function(req, res){
+  User.get_user_by_username(req.body.username, (err, showed_user) =>{
+    if(err){
+      res.json({status: false, message: 'Erreur'});
+    }
+    if(showed_user){
+      res.json(showed_user);
+    } else {
+      res.json({status: false, message: 'Erreur username'});;
     }
   });
 };

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const traveler_schema = new Schema({
-   profile : {
+   profile:{
        type: Schema.Types.ObjectId, ref:'User'
    },
    list_travels_books:[{
@@ -31,10 +31,10 @@ module.exports.save_traveler = function (Traveler, callback) {
 };
 
 module.exports.get_traveler_by_id = function(id, callback){
-   Traveler.findById(id, callback);
+   Traveler.findById(id).populate('list_travels_books').exec(callback);;
 };
 
-module.exports.get_traveler_by_username = function(username, callback){
-  const query = {'profile.username': username};
-  Traveler.find(query, callback);
-};
+module.exports.get_all_traveler = function(callback){
+  const query = {};
+  Traveler.find(query).populate('list_travels_books').exec(callback);
+}

@@ -1,5 +1,6 @@
 const Traveler = require('../models/traveler.js');
 
+
 exports.traveler_create = function(req,res){
   const new_traveler = Traveler({
       profile: req.body.profile,
@@ -22,11 +23,11 @@ exports.get_traveler_by_id = function(req, res){
   });
 };
 
-exports.get_traveler_by_username = function(req, res){
-  Travel_books.get_traveler_by_username(req.body.username, (err, showed_traveler) => {
-    if (err){
+exports.get_all_traveler = function(req, res){
+  Traveler.get_all_traveler((err, showed_traveler) => {
+    if (err) {
       res.json({status: false, message: 'Erreur'});
     }
-    res.json(showed_traveler);
+    res.json(showed_traveler)
   });
 };
