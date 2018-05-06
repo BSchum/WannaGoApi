@@ -1,11 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var cors = require('cors')
 var DB = require('./src/HELPER/database.js')
 
 const app = express();
 DB.MongoDBConnexion();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/', require('./src/routes/index.js'));
 
